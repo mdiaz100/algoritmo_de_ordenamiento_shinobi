@@ -1,6 +1,5 @@
 from AlgoritmodO.Back_shi import MetodoOrdenamiento
 
-
 class HeapSort(MetodoOrdenamiento.MetodoOrdenamiento):
     @staticmethod
     def sort(arr):
@@ -21,11 +20,15 @@ class HeapSort(MetodoOrdenamiento.MetodoOrdenamiento):
 
         n = len(arr)
 
-        for i in range(n // 2 - 1, -1, -1):
-            heapify(arr, n, i)
+        for i in range(n // 2 - 1, -1, -1):  # Big O: O(n)
+            heapify(arr, n, i)  # Big O: O(log n)
 
-        for i in range(n - 1, 0, -1):
-            arr[i], arr[0] = arr[0], arr[i]
-            heapify(arr, i, 0)
+        for i in range(n - 1, 0, -1):  # Big O: O(n)
+            arr[i], arr[0] = arr[0], arr[i]  # Big O: O(1)
+            heapify(arr, i, 0)  # Big O: O(log n)
 
         return arr
+
+# Resumen del Big O:
+# Tiempo de ejecución: O(n * log n)
+# Espacio de memoria: O(1)
