@@ -29,9 +29,7 @@ class Creator:
         }
         clase = self.dict_clases.get(num)
         if clase:
-            array_ordenado = clase.sort(arr)
-            nombre_metodo = metodo_nombres.get(num)
-            mensaje = f"El array fue ordenado utilizando el método de ordenamiento {nombre_metodo} y la columna {columna}"
-            return array_ordenado, mensaje
+            array_ordenado = clase.sort(arr, columna)
+            return array_ordenado
         else:
             print("Número de método de ordenamiento no válido")

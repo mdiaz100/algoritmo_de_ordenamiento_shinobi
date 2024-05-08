@@ -2,16 +2,16 @@ from AlgoritmodO.Back_shi import MetodoOrdenamiento
 
 class HeapSort(MetodoOrdenamiento.MetodoOrdenamiento):
     @staticmethod
-    def sort(arr):
+    def sort(arr, columna):
         def heapify(arr, n, i):
             largest = i
             left = 2 * i + 1
             right = 2 * i + 2
 
-            if left < n and arr[left] > arr[largest]:
+            if left < n and getattr(arr[left], columna) > getattr(arr[largest], columna):
                 largest = left
 
-            if right < n and arr[right] > arr[largest]:
+            if right < n and getattr(arr[right], columna) > getattr(arr[largest], columna):
                 largest = right
 
             if largest != i:

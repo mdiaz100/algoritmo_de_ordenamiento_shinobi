@@ -4,7 +4,7 @@ from PySide2.QtWidgets import QApplication
 
 from AlgoritmodO.Front_shi import Front
 
-if __name__ == "__main__":
+def main():
     app = QApplication(sys.argv)
     window = Front.MainWindow()
     window.show()
@@ -13,4 +13,5 @@ if __name__ == "__main__":
 
 
 
- #holisss
+
+

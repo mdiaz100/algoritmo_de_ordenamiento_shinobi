@@ -2,17 +2,27 @@ from AlgoritmodO.Back_shi import MetodoOrdenamiento
 
 class CountingSort(MetodoOrdenamiento.MetodoOrdenamiento):
     @staticmethod
-    def sort(arr):
-        max_value = max(arr)  # Big O: O(n)
-        min_value = min(arr)  # Big O: O(n)
-        count = [0] * (max_value - min_value + 1)  # Big O: O(k), donde k es el rango de valores en el arreglo
+    def sort(arr, columna):
+        # Obtener el máximo valor del atributo
+        max_value = max(getattr(obj, columna) for obj in arr)
+        # Obtener el mínimo valor del atributo
+        min_value = min(getattr(obj, columna) for obj in arr)
 
-        for num in arr:
-            count[num - min_value] += 1  # Big O: O(1)
+        # Convertir los valores mínimo y máximo a enteros
+        min_value = int(min_value)
+        max_value = int(max_value)
+
+        # Inicializar el arreglo de conteo
+        count = [0] * (max_value - min_value + 1)
+
+        # Contar la frecuencia de cada valor del atributo
+        for obj in arr:
+            count[int(getattr(obj, columna)) - min_value] += 1
 
         sorted_arr = []
-        for i in range(len(count)):  # Big O: O(k)
-            sorted_arr.extend([i + min_value] * count[i])  # Big O: O(n)
+        # Reconstruir el arreglo ordenado utilizando los conteos
+        for i in range(len(count)):
+            sorted_arr.extend([obj for obj in arr if int(getattr(obj, columna)) == i + min_value])
 
         return sorted_arr
 
